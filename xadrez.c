@@ -1,20 +1,29 @@
 #include <stdio.h>
 
-int main(){
-    int j = 1,x = 0;
-    // mover a terre 5 casa para a direita 
-    for (int i = 0;i < 5;i++){
-        printf("Direita\n"); // Emprime a direção do movimento
+void moverPeca(int numb, char nome[], char direcao[]) {
+    if (numb > 0) {
+        printf("%s para %s\n", nome, direcao);
+        moverPeca(numb - 1, nome, direcao);
     }
-    while (j <= 7){
-        // mover a Ranhia 7 casa para a esquerda
-        printf("esquerda\n");// Emprime a direção do movimento
-        j++;
-    }
-    do {// mover o bispo para direita na diagonal.
-        printf("direita na diagonal\n");
-        x++;
-    }while(x <= 5);
+}
+
+int main() {
+    int numero;
+    char direcao[20];
+    char peca[20];
+
+    printf("escolhar a peça para mover!\n");
+    scanf("%s",&peca);
+
+    printf("escolhar a direção para mover a peça!\n");
+    scanf("%s",&direcao);
+
+    printf("escolhar quantas casas deseja mover a peça!\n");
+    scanf("%d",&numero);
+
+
+
+    moverPeca(numero, peca, direcao);
 
     return 0;
 }
